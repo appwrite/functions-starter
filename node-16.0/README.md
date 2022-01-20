@@ -23,21 +23,19 @@ No input
 _Example output:_
 
 <!-- Update with your expected output -->
+
 ```json
 {
     "areDevelopersAwesome": true
 }
 ```
 
-## 🚀 Building and Packaging
+## 🚀 Deployment
 
-<!--
-Highlight the steps required to build and deploy this cloud function.
-
-Take a look at this example (https://github.com/appwrite/demos-for-functions/blob/master/nodejs/welcome-email/README.md) for more information.
-
-Make sure you mention the instructions clearly and also mention the entrypoint command for the function
--->
+1. Install [Appwrite CLI](todo-link-to-cli)
+2. Authenticate with `appwrite login`
+3. Open folder with your `appwrite.json`
+4. Start deploy process with `appwrite deploy`
 
 ## 🎯 Configuration
 
