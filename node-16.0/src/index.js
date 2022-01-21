@@ -22,7 +22,7 @@ if(!process.env.APPWRITE_FUNCTION_ENDPOINT || !process.env.APPWRITE_FUNCTION_API
     console.warn("Some environment variables are not set. Function cannot use AppwriteSDK properly.");
 }
 
-export default function(req, res) {
+module.exports = function(req, res) {
     res.json({
         areDevelopersAwesome: true,
     });
