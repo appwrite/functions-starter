@@ -30,9 +30,9 @@ if(!process.env.APPWRITE_FUNCTION_ENDPOINT || !process.env.APPWRITE_FUNCTION_API
 
     'res' variable has:
         'send(text, status)' - function to return text response. Status code defaults to 200
-        'json(obj, status)' - function to return json response. Status code defaults to 200
+        'json(obj, status)' - function to return JSON response. Status code defaults to 200
     
-    If an error is thrown, response with code 500 will be returned 
+    If an error is thrown, a response with code 500 will be returned.
 */
 
 module.exports = function(req, res) {
