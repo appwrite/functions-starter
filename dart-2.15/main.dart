@@ -1,6 +1,6 @@
 import 'dart:convert';
+import 'package:function_types/function_types.dart';
 import 'package:dart_appwrite/dart_appwrite.dart';
-
 
 Client client = Client();
 Account account = Account(client);
@@ -14,7 +14,7 @@ Teams teams = Teams(client);
 Users users = Users(client);
 
 
-Future<void> main(List<String> args) async {
+Future<void> start(Request request, Response response) async {
   client
   .setEndpoint('https://YOUR_ENDPOINT/v1')
   .setProject('YOUR_PROJECT_ID')
