@@ -14,7 +14,7 @@ Teams teams = Teams(client);
 Users users = Users(client);
 
 
-Future<void> main() async {
+Future<void> main(List<String> args) async {
   client
   .setEndpoint('https://YOUR_ENDPOINT/v1')
   .setProject('YOUR_PROJECT_ID')
