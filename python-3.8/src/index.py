@@ -2,6 +2,9 @@ import os
 from appwrite.client import Client
 from appwrite import services
 
+if not os.environ['APPWRITE_FUNCTION_ENDPOINT'] or not os.environ['APPWRITE_FUNCTION_PROJECT_ID'] or not os.environ['APPWRITE_FUNCTION_API_KEY']:
+  print('Please set APPWRITE_FUNCTION_ENDPOINT, APPWRITE_FUNCTION_PROJECT_ID and APPWRITE_FUNCTION_API_KEY environment variables.')
+
 client = Client()
 
 (
