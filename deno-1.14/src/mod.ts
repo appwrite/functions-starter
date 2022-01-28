@@ -7,7 +7,7 @@ let account = new sdk.Account(client);
 let avatars = new sdk.Avatars(client);
 let database = new sdk.Database(client);
 let functions = new sdk.Functions(client);
-let helath = new sdk.Health(client);
+let health = new sdk.Health(client);
 let locale = new sdk.Locale(client);
 let storage = new sdk.Storage(client);
 let teams = new sdk.Teams(client);
@@ -19,7 +19,7 @@ client
     .setKey(Deno.env.get('APPWRITE_FUNCTION_API_KEY') as string);
 
 if (!Deno.env.get('APPWRITE_FUNCTION_ENDPOINT') || !Deno.env.get('APPWRITE_FUNCTION_API_KEY')) {
-    console.warn("Some environment variables are not set. Function cannot use AppwriteSDK properly.");
+    console.warn("Some environment variables are not set. Function cannot use Appwrite SDK properly.");
 }
 
 /*

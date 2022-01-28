@@ -22,7 +22,7 @@ $account = new Account($client);
 $avatars = new Avatars($client);
 $database = new Database($client);
 $functions = new Functions($client);
-$helath = new Health($client);
+$health = new Health($client);
 $locale = new Locale($client);
 $storage = new Storage($client);
 $teams = new Teams($client);
@@ -34,7 +34,7 @@ $client
     ->setKey(\getenv('APPWRITE_FUNCTION_API_KEY'));
 
 if(!\getenv('APPWRITE_FUNCTION_ENDPOINT') || !\getenv('APPWRITE_FUNCTION_API_KEY')) {
-    echo('Some environment variables are not set. Function cannot use AppwriteSDK properly.');
+    echo('Some environment variables are not set. Function cannot use Appwrite SDK properly.');
 }
 
 /*
