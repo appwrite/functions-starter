@@ -12,7 +12,7 @@ Simple function similar to typical "hello world" example, but instead, we return
 
 _Example input:_
 
-No input
+This function expects no input
 
 <!-- If input is expected, add example -->
 
@@ -28,9 +28,9 @@ _Example output:_
 
 ## 📝 Environment Variables
 
-List of environment variables used by this cloud functions:
+List of environment variables used by this cloud function:
 
- - No special environment variables are required for the cloud function.
+- No special environment variables are required for the cloud function.
 
 ## 🚀 Deployment
 
@@ -44,4 +44,4 @@ Make sure you are in the same folder as your `appwrite.json` file and run `appwr
 
 ### Manual using tar.gz
 
-Manual deployment has no requirements and uses Appwrite Console to deploy the tag. First, enter the folder of your function. Then, create a tarball of the whole folder and gzip it. After creating `.tar.gz` file, visit Appwrite Console, click on the `Deploy Tag` button and switch to the `Manual` tab. There, set the `entrypoint` to `src/main.rs`, and upload the file we just generated. Finally, it's considered good practice to remove the build file from your function source folder.
+Manual deployment has no requirements and uses Appwrite Console to deploy the tag. First, enter the folder of your function. Then, create a tarball of the whole folder and gzip it. After creating `.tar.gz` file, visit Appwrite Console, click on the `Deploy Tag` button and switch to the `Manual` tab. There, set the `entrypoint` to `src/main.rs`, and upload the file we just generated.
