@@ -2,9 +2,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/ruby
 # Edit at https://www.toptal.com/developers/gitignore?templates=ruby
 
-### macOS ###
-.DS_Store
-
 ### Ruby ###
 *.gem
 *.rbc
@@ -63,3 +60,7 @@ build-iPhoneSimulator/
 # .rubocop-https?--*
 
 # End of https://www.toptal.com/developers/gitignore/api/ruby
+
+# OS
+## Mac
+.DS_Store
