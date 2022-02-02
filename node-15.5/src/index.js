@@ -40,7 +40,7 @@ if (
     If an error is thrown, a response with code 500 will be returned.
 */
 
-module.exports = function (req, res) {
+module.exports = async function (req, res) {
  res.json({
   areDevelopersAwesome: true,
  });
