@@ -50,7 +50,8 @@ if(!\getenv('APPWRITE_FUNCTION_ENDPOINT') || !\getenv('APPWRITE_FUNCTION_API_KEY
     If an error is thrown, a response with code 500 will be returned.
 */
 
-return function ($req, $res) {
+return function($req, $res)
+        use($account, $avatars, $database, $functions, $health, $locale, $storage, $teams, $users) {
     $res->json([
         'areDevelopersAwesome' => true
     ]);
