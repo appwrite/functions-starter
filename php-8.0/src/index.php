@@ -28,31 +28,31 @@ $storage = new Storage($client);
 $teams = new Teams($client);
 $users = new Users($client);
 
-$client
+if(!\getenv('APPWRITE_FUNCTION_ENDPOINT') || !\getenv('APPWRITE_FUNCTION_API_KEY')) {
+  echo('Environment variables are not set. Function cannot use Appwrite SDK.');
+} else {
+  $client
     ->setEndpoint(\getenv('APPWRITE_FUNCTION_ENDPOINT'))
     ->setProject(\getenv('APPWRITE_FUNCTION_PROJECT_ID'))
-    ->setKey(\getenv('APPWRITE_FUNCTION_API_KEY'));
-
-if(!\getenv('APPWRITE_FUNCTION_ENDPOINT') || !\getenv('APPWRITE_FUNCTION_API_KEY')) {
-    echo('Some environment variables are not set. Function cannot use Appwrite SDK properly.');
+    ->setKey(\getenv('APPWRITE_FUNCTION_API_KEY'))
+    ->setSelfSigned(true);
 }
 
 /*
-    '$req' variable has:
-        'headers' - object with request headers
-        'payload' - object with request body data
-        'env' - object with environment variables
+  '$req' variable has:
+    'headers' - object with request headers
+    'payload' - object with request body data
+    'env' - object with environment variables
 
-    '$res' variable has:
-        'send(text, status)' - function to return text response. Status code defaults to 200
-        'json(obj, status)' - function to return JSON response. Status code defaults to 200
-    
-    If an error is thrown, a response with code 500 will be returned.
+  '$res' variable has:
+    'send(text, status)' - function to return text response. Status code defaults to 200
+    'json(obj, status)' - function to return JSON response. Status code defaults to 200
+
+  If an error is thrown, a response with code 500 will be returned.
 */
 
-return function($req, $res)
-        use($account, $avatars, $database, $functions, $health, $locale, $storage, $teams, $users) {
-    $res->json([
-        'areDevelopersAwesome' => true
-    ]);
+return function($req, $res) use ($account, $avatars, $database, $functions, $health, $locale, $storage, $teams, $users) {
+  $res->json([
+    'areDevelopersAwesome' => true
+  ]);
 };

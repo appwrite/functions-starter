@@ -19,18 +19,17 @@ Map<String, String> envVars = Platform.environment;
 Future<void> start(FunctionRequest request, FunctionResponse response) async {
 
   if(
-    envVars.containsKey('APPWRITE_API_KEY') == false
-    || envVars.containsKey('APPWRITE_API_KEY') == false
-    || envVars.containsKey('APPWRITE_API_KEY') == false
+    envVars.containsKey('APPWRITE_FUNCTION_ENDPOINT') == false
+    || envVars.containsKey('APPWRITE_FUNCTION_API_KEY') == false
   ) {
-    print("Please set APPWRITE_FUNCTION_ENDPOINT, APPWRITE_FUNCTION_PROJECT_ID and APPWRITE_FUNCTION_API_KEY environment variables.");
+    print("Environment variables are not set. Function cannot use Appwrite SDK.");
+  } else {
+    client
+      .setEndpoint(envVars['APPWRITE_FUNCTION_ENDPOINT'])
+      .setProject(envVars['APPWRITE_FUNCTION_PROJECT_ID'])
+      .setKey(envVars['APPWRITE_FUNCTION_API_KEY'])
+      .setSelfSigned(status: true);
   }
-
-  client
-  .setEndpoint('https://YOUR_ENDPOINT/v1')
-  .setProject('YOUR_PROJECT_ID')
-  .setKey('YOUR_APPWRITE_KEY')
-  .setSelfSigned(status: true);
 
   response.json({
     'areDevelopersAwesome': true,
