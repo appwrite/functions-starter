@@ -19,8 +19,7 @@ if (!Deno.env.get('APPWRITE_FUNCTION_ENDPOINT') || !Deno.env.get('APPWRITE_FUNCT
   client
     .setEndpoint(Deno.env.get('APPWRITE_FUNCTION_ENDPOINT') as string)
     .setProject(Deno.env.get('APPWRITE_FUNCTION_PROJECT_ID') as string)
-    .setKey(Deno.env.get('APPWRITE_FUNCTION_API_KEY') as string)
-    .setSelfSigned(true);
+    .setKey(Deno.env.get('APPWRITE_FUNCTION_API_KEY') as string);
 }
 
 /*
