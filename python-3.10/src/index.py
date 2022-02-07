@@ -1,28 +1,39 @@
 import os
 from appwrite.client import Client
-from appwrite import services
+
+# You can remove imports of services you don't use
+from appwrite.services.account import Account
+from appwrite.services.avatars import Avatars
+from appwrite.services.database import Database
+from appwrite.services.functions import Functions
+from appwrite.services.health import Health
+from appwrite.services.locale import Locale
+from appwrite.services.storage import Storage
+from appwrite.services.teams import Teams
+from appwrite.services.users import Users
 
 client = Client()
 
-account = services.Account(client)
-avatars = services.Avatars(client)
-database = services.Database(client)
-functions = services.Functions(client)
-health = services.Health(client)
-locale = services.Locale(client)
-storage = services.Storage(client)
-teams = services.Teams(client)
-users = services.Users(client)
+# You can remove services you don't use
+account = Account(client)
+avatars = Avatars(client)
+database = Database(client)
+functions = Functions(client)
+health = Health(client)
+locale = Locale(client)
+storage = Storage(client)
+teams = Teams(client)
+users = Users(client)
 
-if not os.environ['APPWRITE_FUNCTION_ENDPOINT'] or not os.environ['APPWRITE_FUNCTION_API_KEY']:
+if not os.getenv('APPWRITE_FUNCTION_ENDPOINT') or not os.getenv('APPWRITE_FUNCTION_API_KEY'):
   print('Environment variables are not set. Function cannot use Appwrite SDK.')
 else:
   (
   client
-    .setEndpoint(os.environ['APPWRITE_FUNCTION_ENDPOINT'])
-    .setProject(os.environ['APPWRITE_FUNCTION_PROJECT_ID'])
-    .setKey(os.environ['APPWRITE_FUNCTION_API_KEY'])
-    .setSelfSigned(True)
+    .set_endpoint(os.getenv('APPWRITE_FUNCTION_ENDPOINT'))
+    .set_project(os.getenv('APPWRITE_FUNCTION_PROJECT_ID'))
+    .set_key(os.getenv('APPWRITE_FUNCTION_API_KEY'))
+    .set_self_signed(True)
   )
 
 """
