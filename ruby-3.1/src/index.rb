@@ -2,6 +2,7 @@ require 'appwrite'
 
 client = Appwrite::Client.new
 
+# You can remove services you don't use
 account = Appwrite::Account.new(client)
 avatars = Appwrite::Avatars.new(client)
 database = Appwrite::Database.new(client)

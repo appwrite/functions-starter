@@ -3,6 +3,8 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 import 'function_types.dart';
 
 Client client = Client();
+
+// You can remove services you don't use
 Account account = Account(client);
 Avatars avatars = Avatars(client);
 Database database = Database(client);
