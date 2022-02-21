@@ -1,31 +1,5 @@
 const sdk = require("node-appwrite");
 
-const client = new sdk.Client();
-
-// You can remove services you don't use
-let account = new sdk.Account(client);
-let avatars = new sdk.Avatars(client);
-let database = new sdk.Database(client);
-let functions = new sdk.Functions(client);
-let health = new sdk.Health(client);
-let locale = new sdk.Locale(client);
-let storage = new sdk.Storage(client);
-let teams = new sdk.Teams(client);
-let users = new sdk.Users(client);
-
-if (
-  !process.env.APPWRITE_FUNCTION_ENDPOINT ||
-  !process.env.APPWRITE_FUNCTION_API_KEY
-) {
-  console.warn("Environment variables are not set. Function cannot use Appwrite SDK.");
-} else {
-  client
-    .setEndpoint(process.env.APPWRITE_FUNCTION_ENDPOINT)
-    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-    .setKey(process.env.APPWRITE_FUNCTION_API_KEY)
-    .setSelfSigned(true);
-}
-
 /*
   'req' variable has:
     'headers' - object with request headers
@@ -40,6 +14,32 @@ if (
 */
 
 module.exports = async function (req, res) {
+  const client = new sdk.Client();
+
+  // You can remove services you don't use
+  let account = new sdk.Account(client);
+  let avatars = new sdk.Avatars(client);
+  let database = new sdk.Database(client);
+  let functions = new sdk.Functions(client);
+  let health = new sdk.Health(client);
+  let locale = new sdk.Locale(client);
+  let storage = new sdk.Storage(client);
+  let teams = new sdk.Teams(client);
+  let users = new sdk.Users(client);
+
+  if (
+    !req.env['APPWRITE_FUNCTION_ENDPOINT'] ||
+    !req.env['APPWRITE_FUNCTION_API_KEY']
+  ) {
+    console.warn("Environment variables are not set. Function cannot use Appwrite SDK.");
+  } else {
+    client
+      .setEndpoint(req.env['APPWRITE_FUNCTION_ENDPOINT'])
+      .setProject(req.env['APPWRITE_FUNCTION_PROJECT_ID'])
+      .setKey(req.env['APPWRITE_FUNCTION_API_KEY'])
+      .setSelfSigned(true);
+  }
+
   res.json({
     areDevelopersAwesome: true,
   });

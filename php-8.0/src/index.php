@@ -15,29 +15,6 @@ use Appwrite\Services\Users;
 
 require_once 'vendor/autoload.php';
 
-$client = new Client();
-
-// You can remove services you don't use
-$account = new Account($client);
-$avatars = new Avatars($client);
-$database = new Database($client);
-$functions = new Functions($client);
-$health = new Health($client);
-$locale = new Locale($client);
-$storage = new Storage($client);
-$teams = new Teams($client);
-$users = new Users($client);
-
-if(!\getenv('APPWRITE_FUNCTION_ENDPOINT') || !\getenv('APPWRITE_FUNCTION_API_KEY')) {
-  echo('Environment variables are not set. Function cannot use Appwrite SDK.');
-} else {
-  $client
-    ->setEndpoint(\getenv('APPWRITE_FUNCTION_ENDPOINT'))
-    ->setProject(\getenv('APPWRITE_FUNCTION_PROJECT_ID'))
-    ->setKey(\getenv('APPWRITE_FUNCTION_API_KEY'))
-    ->setSelfSigned(true);
-}
-
 /*
   '$req' variable has:
     'headers' - object with request headers
@@ -51,7 +28,30 @@ if(!\getenv('APPWRITE_FUNCTION_ENDPOINT') || !\getenv('APPWRITE_FUNCTION_API_KEY
   If an error is thrown, a response with code 500 will be returned.
 */
 
-return function($req, $res) use ($account, $avatars, $database, $functions, $health, $locale, $storage, $teams, $users) {
+return function($req, $res) {
+  $client = new Client();
+
+  // You can remove services you don't use
+  $account = new Account($client);
+  $avatars = new Avatars($client);
+  $database = new Database($client);
+  $functions = new Functions($client);
+  $health = new Health($client);
+  $locale = new Locale($client);
+  $storage = new Storage($client);
+  $teams = new Teams($client);
+  $users = new Users($client);
+
+  if(!$req['env']['APPWRITE_FUNCTION_ENDPOINT'] || !$req['env']['APPWRITE_FUNCTION_API_KEY']) {
+    echo('Environment variables are not set. Function cannot use Appwrite SDK.');
+  } else {
+    $client
+      ->setEndpoint($req['env']['APPWRITE_FUNCTION_ENDPOINT'])
+      ->setProject($req['env']['APPWRITE_FUNCTION_PROJECT_ID'])
+      ->setKey($req['env']['APPWRITE_FUNCTION_API_KEY'])
+      ->setSelfSigned(true);
+  }
+
   $res->json([
     'areDevelopersAwesome' => true
   ]);
