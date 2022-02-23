@@ -2,30 +2,6 @@ import Appwrite
 import AppwriteModels
 import Foundation
 
-let client = Client()
-
-// You can remove services you don't use
-let account = Account(client)
-let avatars = Avatars(client)
-let database = Database(client)
-let functions = Functions(client)
-let health = Health(client)
-let locale = Locale(client)
-let storage = Storage(client)
-let teams = Teams(client)
-let users = Users(client)
-
-let env = ProcessInfo.processInfo.environment
-
-if(env["APPWRITE_FUNCTION_ENDPOINT"] == nil || env["APPWRITE_FUNCTION_API_KEY"] == nil) {
-    print("Environment variables are not set. Function cannot use Appwrite SDK.")
-} else {
-  client
-    .setEndpoint(env["APPWRITE_FUNCTION_ENDPOINT"]!)
-    .setProject(env["APPWRITE_FUNCTION_PROJECT_ID"]!)
-    .setKey(env["APPWRITE_FUNCTION_API_KEY"]!) 
-}
-
 /*
   'req' variable has:
     'headers' - object with request headers
@@ -40,6 +16,28 @@ if(env["APPWRITE_FUNCTION_ENDPOINT"] == nil || env["APPWRITE_FUNCTION_API_KEY"] 
 */
 
 func main(req: RequestValue, res: RequestResponse) -> RequestResponse {
+  let client = Client()
+
+  // You can remove services you don't use
+  let account = Account(client)
+  let avatars = Avatars(client)
+  let database = Database(client)
+  let functions = Functions(client)
+  let health = Health(client)
+  let locale = Locale(client)
+  let storage = Storage(client)
+  let teams = Teams(client)
+  let users = Users(client)
+
+  if(req.env?["APPWRITE_FUNCTION_ENDPOINT"] == nil || req.env?["APPWRITE_FUNCTION_API_KEY"] == nil) {
+      print("Environment variables are not set. Function cannot use Appwrite SDK.")
+  } else {
+    client
+      .setEndpoint(req.env?["APPWRITE_FUNCTION_ENDPOINT"]!)
+      .setProject(req.env?["APPWRITE_FUNCTION_PROJECT_ID"]!)
+      .setKey(req.env?["APPWRITE_FUNCTION_API_KEY"]!) 
+  }
+
   return res.json(data: [
     "areDevelopersAwesome": true
   ])

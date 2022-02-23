@@ -1,27 +1,5 @@
 import { sdk } from "./deps.ts";
 
-const client = new sdk.Client();
-
-// You can remove services you don't use
-let account = new sdk.Account(client);
-let avatars = new sdk.Avatars(client);
-let database = new sdk.Database(client);
-let functions = new sdk.Functions(client);
-let health = new sdk.Health(client);
-let locale = new sdk.Locale(client);
-let storage = new sdk.Storage(client);
-let teams = new sdk.Teams(client);
-let users = new sdk.Users(client);
-
-if (!Deno.env.get('APPWRITE_FUNCTION_ENDPOINT') || !Deno.env.get('APPWRITE_FUNCTION_API_KEY')) {
-  console.warn("Environment variables are not set. Function cannot use Appwrite SDK.");
-} else {
-  client
-    .setEndpoint(Deno.env.get('APPWRITE_FUNCTION_ENDPOINT') as string)
-    .setProject(Deno.env.get('APPWRITE_FUNCTION_PROJECT_ID') as string)
-    .setKey(Deno.env.get('APPWRITE_FUNCTION_API_KEY') as string);
-}
-
 /*
   'req' variable has:
     'headers' - object with request headers
@@ -36,6 +14,28 @@ if (!Deno.env.get('APPWRITE_FUNCTION_ENDPOINT') || !Deno.env.get('APPWRITE_FUNCT
 */
 
 export default async function (req: any, res: any) {
+  const client = new sdk.Client();
+
+  // You can remove services you don't use
+  let account = new sdk.Account(client);
+  let avatars = new sdk.Avatars(client);
+  let database = new sdk.Database(client);
+  let functions = new sdk.Functions(client);
+  let health = new sdk.Health(client);
+  let locale = new sdk.Locale(client);
+  let storage = new sdk.Storage(client);
+  let teams = new sdk.Teams(client);
+  let users = new sdk.Users(client);
+
+  if (!req.env['APPWRITE_FUNCTION_ENDPOINT'] || !req.env['APPWRITE_FUNCTION_API_KEY']) {
+    console.warn("Environment variables are not set. Function cannot use Appwrite SDK.");
+  } else {
+    client
+      .setEndpoint(req.env['APPWRITE_FUNCTION_ENDPOINT'] as string)
+      .setProject(req.env['APPWRITE_FUNCTION_PROJECT_ID'] as string)
+      .setKey(req.env['APPWRITE_FUNCTION_API_KEY'] as string);
+  }
+
   res.json({
     areDevelopersAwesome: true,
   });

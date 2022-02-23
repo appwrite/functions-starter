@@ -1,29 +1,5 @@
 require 'appwrite'
 
-client = Appwrite::Client.new
-
-# You can remove services you don't use
-account = Appwrite::Account.new(client)
-avatars = Appwrite::Avatars.new(client)
-database = Appwrite::Database.new(client)
-functions = Appwrite::Functions.new(client)
-health = Appwrite::Health.new(client)
-locale = Appwrite::Locale.new(client)
-storage = Appwrite::Storage.new(client)
-teams = Appwrite::Teams.new(client)
-users = Appwrite::Users.new(client)
-
-if !ENV.has_key?('APPWRITE_FUNCTION_ENDPOINT') or !ENV.has_key?('APPWRITE_FUNCTION_API_KEY')
-  puts "Environment variables are not set. Function cannot use Appwrite SDK."
-  exit
-else
-  client
-    .setEndpoint(ENV['APPWRITE_FUNCTION_ENDPOINT'])
-    .setProject(ENV['APPWRITE_FUNCTION_PROJECTID'])
-    .setKey(ENV['APPWRITE_FUNCTION_API_KEY'])
-    .setSelfSigned(true)
-end
-
 =begin
   'req' variable has:
     'headers' - object with request headers
@@ -38,6 +14,29 @@ end
 =end
 
 def main(req, res)
+  client = Appwrite::Client.new
+
+  # You can remove services you don't use
+  account = Appwrite::Account.new(client)
+  avatars = Appwrite::Avatars.new(client)
+  database = Appwrite::Database.new(client)
+  functions = Appwrite::Functions.new(client)
+  health = Appwrite::Health.new(client)
+  locale = Appwrite::Locale.new(client)
+  storage = Appwrite::Storage.new(client)
+  teams = Appwrite::Teams.new(client)
+  users = Appwrite::Users.new(client)
+
+  if !req.env['APPWRITE_FUNCTION_ENDPOINT'] or !req.env['APPWRITE_FUNCTION_API_KEY']
+    puts "Environment variables are not set. Function cannot use Appwrite SDK."
+  else
+    client
+      .setEndpoint(req.env['APPWRITE_FUNCTION_ENDPOINT'])
+      .setProject(req.env['APPWRITE_FUNCTION_PROJECTID'])
+      .setKey(req.env['APPWRITE_FUNCTION_API_KEY'])
+      .setSelfSigned(true)
+  end
+
   return res.json({
     :areDevelopersAwesome => true,
   })
