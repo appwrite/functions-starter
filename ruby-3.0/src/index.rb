@@ -29,7 +29,6 @@ def main(req, res)
 
   if !req.env['APPWRITE_FUNCTION_ENDPOINT'] or !req.env['APPWRITE_FUNCTION_API_KEY']
     puts "Environment variables are not set. Function cannot use Appwrite SDK."
-    exit
   else
     client
       .setEndpoint(req.env['APPWRITE_FUNCTION_ENDPOINT'])
