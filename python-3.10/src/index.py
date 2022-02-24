@@ -45,7 +45,7 @@ def main(req, res):
     client
       .set_endpoint(req.env.get('APPWRITE_FUNCTION_ENDPOINT', None))
       .set_project(req.env.get('APPWRITE_FUNCTION_PROJECT_ID', None))
-      .set_key(req.env.get('APPWRITE_FUNCTION_API_KEY', None)))
+      .set_key(req.env.get('APPWRITE_FUNCTION_API_KEY', None))
       .set_self_signed(True)
     )
   
