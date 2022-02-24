@@ -30,9 +30,7 @@ _Example output:_
 
 List of environment variables used by this cloud function:
 
-- **APPWRITE_FUNCTION_ENDPOINT** - Endpoint of Appwrite project
-- **APPWRITE_FUNCTION_API_KEY** - Appwrite API Key
-<!-- Add your custom environment variables -->
+- No special environment variables are required for the cloud function.
 
 ## 🚀 Deployment
 
@@ -46,4 +44,4 @@ Make sure you are in the same folder as your `appwrite.json` file and run `appwr
 
 ### Manual using tar.gz
 
-Manual deployment has no requirements and uses Appwrite Console to deploy the tag. First, enter the folder of your function. Then, create a tarball of the whole folder and gzip it. After creating `.tar.gz` file, visit Appwrite Console, click on the `Deploy Tag` button and switch to the `Manual` tab. There, set the `entrypoint` to `src/index.js`, and upload the file we just generated.
+Manual deployment has no requirements and uses Appwrite Console to deploy the tag. First, enter the folder of your function. Then, create a tarball of the whole folder and gzip it. After creating `.tar.gz` file, visit Appwrite Console, click on the `Deploy Tag` button and switch to the `Manual` tab. There, set the `entrypoint` to `Surces/swift-5.5/main.swift`, and upload the file we just generated.
