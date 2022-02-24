@@ -13,7 +13,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
   If an error is thrown, a response with code 500 will be returned.
 */
 
-Future<void> start(final request, final response) async {
+Future<void> start(final req, final res) async {
   Client client = Client();
 
   // You can remove services you don't use
@@ -28,7 +28,9 @@ Future<void> start(final request, final response) async {
   Users users = Users(client);
 
   if(
-    !req.env['APPWRITE_FUNCTION_ENDPOINT'] || !req.env['APPWRITE_FUNCTION_API_KEY']
+    req.env['APPWRITE_FUNCTION_ENDPOINT'] == null
+      || req.env['APPWRITE_FUNCTION_API_KEY'] == null
+      || req.env['APPWRITE_FUNCTION_API_KEY'] == null
   ) {
     print("Environment variables are not set. Function cannot use Appwrite SDK.");
   } else {
@@ -39,7 +41,7 @@ Future<void> start(final request, final response) async {
       .setSelfSigned(status: true);
   }
 
-  response.json({
+  res.json({
     'areDevelopersAwesome': true,
   });
 }
