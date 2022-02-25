@@ -32,7 +32,7 @@ func main(req: RequestValue, res: RequestResponse) -> RequestResponse {
   guard let endpoint = req.env["APPWRITE_FUNCTION_ENDPOINT"],
     let project = req.env["APPWRITE_FUNCTION_PROJECT_ID"],
     let apiKey = req.env["APPWRITE_FUNCTION_API_KEY"] else {
-      return res.json(data: ["error": "Missing environment variables"])
+      print("Environment variables are not set. Function cannot use Appwrite SDK.")
 
   client
     .setEndpoint(endpoint)
