@@ -1,1 +1,1 @@
-export * as sdk from "https://deno.land/x/appwrite@2.0.2/mod.ts";
+export * as sdk from "https://deno.land/x/appwrite@3.0.0/mod.ts";
