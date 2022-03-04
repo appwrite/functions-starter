@@ -31,10 +31,10 @@ def main(req, res)
     puts "Environment variables are not set. Function cannot use Appwrite SDK."
   else
     client
-      .setEndpoint(req.env['APPWRITE_FUNCTION_ENDPOINT'])
-      .setProject(req.env['APPWRITE_FUNCTION_PROJECTID'])
-      .setKey(req.env['APPWRITE_FUNCTION_API_KEY'])
-      .setSelfSigned(true)
+      .set_endpoint(req.env['APPWRITE_FUNCTION_ENDPOINT'])
+      .set_project(req.env['APPWRITE_FUNCTION_PROJECTID'])
+      .set_key(req.env['APPWRITE_FUNCTION_API_KEY'])
+      .set_self_signed(true)
   end
 
   return res.json({
