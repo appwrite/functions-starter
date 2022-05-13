@@ -18,3 +18,4 @@ appwrite init function
 | ruby    | 3.0      | 3.1  |      |      |
 | rust    | 1.55     |      |      |      |
 | swift   | 5.5      |      |      |      |
+| .NET    | 3.1      | 6.0  |      |      |
