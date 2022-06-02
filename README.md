@@ -22,3 +22,4 @@ appwrite init function
 | Swift   | 5.5       |      |      |       |
 | Java    | 8.0       | 11.0 | 17.0 |       |
 | Kotlin  | 1.6.10    |      |      |       |
+| .NET    | 3.1       | 6.0  |      |       |
