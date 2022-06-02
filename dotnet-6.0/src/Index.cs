@@ -13,7 +13,7 @@
 
 public async Task<RuntimeResponse> Main(RuntimeRequest req, RuntimeResponse res)
 {
-    // Appwrite SDK is not yet available for .NET
+    // Appwrite's SDK for .NET is currently under the works and shall be available soon
 
     return res.Json(new()
     {
