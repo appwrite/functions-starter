@@ -29,7 +29,7 @@ Future<void> start(final req, final res) async {
 
   if(
     req.env['APPWRITE_FUNCTION_ENDPOINT'] == null
-      || req.env['APPWRITE_FUNCTION_API_KEY'] == null
+      || req.env['APPWRITE_FUNCTION_PROJECT_ID'] == null
       || req.env['APPWRITE_FUNCTION_API_KEY'] == null
   ) {
     print("Environment variables are not set. Function cannot use Appwrite SDK.");
