@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 import io.appwrite.Client;
 import io.appwrite.services.Account;
 import io.appwrite.services.Avatars;
-import io.appwrite.services.Database;
+import io.appwrite.services.Databases;
 import io.appwrite.services.Functions;
 import io.appwrite.services.Health;
 import io.appwrite.services.Locale;
@@ -24,7 +24,7 @@ public RuntimeResponse main(RuntimeRequest req, RuntimeResponse res) throws Exce
     // You can remove services you don't use
     Account account = new Account(client);
     Avatars avatars = new Avatars(client);
-    Database database = new Database(client);
+    Databases database = new Databases(client, "YOUR_DATABASE_ID");
     Functions functions = new Functions(client);
     Health health = new Health(client);
     Locale locale = new Locale(client);

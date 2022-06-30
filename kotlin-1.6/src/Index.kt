@@ -8,7 +8,7 @@ import com.google.gson.Gson
 import io.appwrite.Client
 import io.appwrite.services.Account
 import io.appwrite.services.Avatars
-import io.appwrite.services.Database
+import io.appwrite.services.Databases
 import io.appwrite.services.Functions
 import io.appwrite.services.Health
 import io.appwrite.services.Locale
@@ -25,7 +25,7 @@ fun main(req: RuntimeRequest, res: RuntimeResponse): RuntimeResponse {
     // You can remove services you don't use
     val account = Account(client)
     val avatars = Avatars(client)
-    val database = Database(client)
+    val database = Databases(client, "YOUR_DATABASE_ID")
     val functions = Functions(client)
     val health = Health(client)
     val locale = Locale(client)

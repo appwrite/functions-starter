@@ -19,7 +19,7 @@ module.exports = async function (req, res) {
   // You can remove services you don't use
   let account = new sdk.Account(client);
   let avatars = new sdk.Avatars(client);
-  let database = new sdk.Database(client);
+  let database = new sdk.Databases(client, 'YOUR_DATABASE_ID');
   let functions = new sdk.Functions(client);
   let health = new sdk.Health(client);
   let locale = new sdk.Locale(client);
