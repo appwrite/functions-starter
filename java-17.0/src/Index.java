@@ -19,36 +19,35 @@ import io.appwrite.services.Users;
 final Gson gson = new Gson();
 
 public RuntimeResponse main(RuntimeRequest req, RuntimeResponse res) throws Exception {
-    final Client client = new Client();
+    var client = new Client();
 
     // You can remove services you don't use
-    Account account = new Account(client);
-    Avatars avatars = new Avatars(client);
-    Databases database = new Databases(client, "YOUR_DATABASE_ID");
-    Functions functions = new Functions(client);
-    Health health = new Health(client);
-    Locale locale = new Locale(client);
-    Storage storage = new Storage(client);
-    Teams teams = new Teams(client);
-    Users users = new Users(client);
+    var account = new Account(client);
+    var avatars = new Avatars(client);
+    var database = new Databases(client, "YOUR_DATABASE_ID");
+    var functions = new Functions(client);
+    var health = new Health(client);
+    var locale = new Locale(client);
+    var storage = new Storage(client);
+    var teams = new Teams(client);
+    var users = new Users(client);
 
-    Map<String, String> env = req.getEnv();
+    var env = req.getEnv();
 
     if (env == null
-    || !env.containsKey("APPWRITE_FUNCTION_ENDPOINT")
-    || env.get("APPWRITE_FUNCTION_ENDPOINT") == null
-    || !env.containsKey("APPWRITE_FUNCTION_API_KEY")
-    || env.get("APPWRITE_FUNCTION_API_KEY") == null) {
+        || !env.containsKey("APPWRITE_FUNCTION_ENDPOINT")
+        || !env.containsKey("APPWRITE_FUNCTION_API_KEY")
+        || env.get("APPWRITE_FUNCTION_ENDPOINT") == null
+        || env.get("APPWRITE_FUNCTION_API_KEY") == null) {
         System.out.println("Environment variables are not set. Function cannot use Appwrite SDK.");
     } else {
-    client
-      .setEndpoint(env.get("APPWRITE_FUNCTION_ENDPOINT"))
-      .setProject(env.get("APPWRITE_FUNCTION_PROJECT_ID"))
-      .setKey(env.get("APPWRITE_FUNCTION_API_KEY"));
+        client
+          .setEndpoint(env.get("APPWRITE_FUNCTION_ENDPOINT"))
+          .setProject(env.get("APPWRITE_FUNCTION_PROJECT_ID"))
+          .setKey(env.get("APPWRITE_FUNCTION_API_KEY"));
     }
 
-    Map<String, Object> data = new HashMap<>();
-    data.put("areDevelopersAwesome", true);
-
-    return res.json(data);
+    return res.json(Map.of(
+        "areDevelopersAwesome", true
+    ));
 }
