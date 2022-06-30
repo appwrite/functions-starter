@@ -3,7 +3,7 @@ from appwrite.client import Client
 # You can remove imports of services you don't use
 from appwrite.services.account import Account
 from appwrite.services.avatars import Avatars
-from appwrite.services.database import Database
+from appwrite.services.databases import Databases
 from appwrite.services.functions import Functions
 from appwrite.services.health import Health
 from appwrite.services.locale import Locale
@@ -30,7 +30,7 @@ def main(req, res):
   # You can remove services you don't use
   account = Account(client)
   avatars = Avatars(client)
-  database = Database(client)
+  database = Databases(client, 'YOUR_DATABASE_ID')
   functions = Functions(client)
   health = Health(client)
   locale = Locale(client)

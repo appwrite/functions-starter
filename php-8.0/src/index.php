@@ -5,7 +5,7 @@ use Appwrite\Client;
 // You can remove imports of services you don't use
 use Appwrite\Services\Account;
 use Appwrite\Services\Avatars;
-use Appwrite\Services\Database;
+use Appwrite\Services\Databases;
 use Appwrite\Services\Functions;
 use Appwrite\Services\Health;
 use Appwrite\Services\Locale;
@@ -34,7 +34,7 @@ return function($req, $res) {
   // You can remove services you don't use
   $account = new Account($client);
   $avatars = new Avatars($client);
-  $database = new Database($client);
+  $database = new Databases($client, 'YOUR_DATABASE_ID');
   $functions = new Functions($client);
   $health = new Health($client);
   $locale = new Locale($client);
