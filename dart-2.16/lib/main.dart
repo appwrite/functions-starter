@@ -19,7 +19,7 @@ Future<void> start(final req, final res) async {
   // You can remove services you don't use
   Account account = Account(client);
   Avatars avatars = Avatars(client);
-  Databases database = Databases(client, "YOUR_DATABASE_ID");
+  Databases database = Databases(client, databaseId: "YOUR_DATABASE_ID");
   Functions functions = Functions(client);
   Health health = Health(client);
   Locale locale = Locale(client);
