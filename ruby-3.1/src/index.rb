@@ -19,7 +19,7 @@ def main(req, res)
   # You can remove services you don't use
   account = Appwrite::Account.new(client)
   avatars = Appwrite::Avatars.new(client)
-  database = Appwrite::Databases.new(client, "YOUR_DATABASE_ID")
+  database = Appwrite::Databases.new(client, database_id: 'YOUR_DATABASE_ID')
   functions = Appwrite::Functions.new(client)
   health = Appwrite::Health.new(client)
   locale = Appwrite::Locale.new(client)
