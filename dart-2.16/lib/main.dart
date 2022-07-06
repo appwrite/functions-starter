@@ -16,28 +16,27 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 Future<void> start(final req, final res) async {
   Client client = Client();
 
-  // You can remove services you don't use
-  Account account = Account(client);
-  Avatars avatars = Avatars(client);
-  Databases database = Databases(client, databaseId: "YOUR_DATABASE_ID");
-  Functions functions = Functions(client);
-  Health health = Health(client);
-  Locale locale = Locale(client);
-  Storage storage = Storage(client);
-  Teams teams = Teams(client);
-  Users users = Users(client);
+  // Uncomment the sevices you need, delete the ones you don't
+  // final account = Account(client);
+  // final avatars = Avatars(client);
+  // final database = Databases(client, databaseId: "YOUR_DATABASE_ID");
+  // final functions = Functions(client);
+  // final health = Health(client);
+  // final locale = Locale(client);
+  // final storage = Storage(client);
+  // final teams = Teams(client);
+  // final users = Users(client);
 
-  if(
-    req.env['APPWRITE_FUNCTION_ENDPOINT'] == null
-      || req.env['APPWRITE_FUNCTION_API_KEY'] == null
-  ) {
-    print("Environment variables are not set. Function cannot use Appwrite SDK.");
+  if (req.env['APPWRITE_FUNCTION_ENDPOINT'] == null ||
+      req.env['APPWRITE_FUNCTION_API_KEY'] == null) {
+    print(
+        "Environment variables are not set. Function cannot use Appwrite SDK.");
   } else {
     client
-      .setEndpoint(req.env['APPWRITE_FUNCTION_ENDPOINT'])
-      .setProject(req.env['APPWRITE_FUNCTION_PROJECT_ID'])
-      .setKey(req.env['APPWRITE_FUNCTION_API_KEY'])
-      .setSelfSigned(status: true);
+        .setEndpoint(req.env['APPWRITE_FUNCTION_ENDPOINT'])
+        .setProject(req.env['APPWRITE_FUNCTION_PROJECT_ID'])
+        .setKey(req.env['APPWRITE_FUNCTION_API_KEY'])
+        .setSelfSigned(status: true);
   }
 
   res.json({
