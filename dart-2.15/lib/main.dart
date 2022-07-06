@@ -16,7 +16,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
 Future<void> start(final req, final res) async {
   Client client = Client();
 
-  // Uncomment the sevices you need, delete the ones you don't
+  // Uncomment the services you need, delete the ones you don't
   // final account = Account(client);
   // final avatars = Avatars(client);
   // final database = Databases(client, databaseId: "YOUR_DATABASE_ID");
