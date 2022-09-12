@@ -1,7 +1,7 @@
 /*
   'req' variable has:
     'Headers' - object with request headers
-    'Payload' - object with request body data
+    'Payload' - request body data as a string
     'Env' - object with environment variables
 
   'res' variable has:

@@ -16,6 +16,19 @@ import io.appwrite.services.Storage;
 import io.appwrite.services.Teams;
 import io.appwrite.services.Users;
 
+/*
+  'req' variable has:
+    'headers' - object with request headers
+    'payload' - request body data as a string
+    'env' - object with environment variables
+
+  'res' variable has:
+    'send(text, status)' - function to return text response. Status code defaults to 200
+    'json(obj, status)' - function to return JSON response. Status code defaults to 200
+  
+  If an error is thrown, a response with code 500 will be returned.
+*/
+
 final Gson gson = new Gson();
 
 public RuntimeResponse main(RuntimeRequest req, RuntimeResponse res) throws Exception {
