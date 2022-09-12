@@ -1,7 +1,7 @@
 /*
   'req' variable has:
     'Headers' - object with request headers
-    'Payload' - object with request body data
+    'Payload' - request body data as a string
     'Env' - object with environment variables
 
   'res' variable has:
@@ -10,6 +10,9 @@
   
   If an error is thrown, a response with code 500 will be returned.
 */
+
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 public async Task<RuntimeResponse> Main(RuntimeRequest req, RuntimeResponse res)
 {
