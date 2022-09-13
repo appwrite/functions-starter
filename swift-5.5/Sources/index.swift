@@ -6,7 +6,7 @@ import Foundation
   'req' variable has:
     'headers' - object with request headers
     'payload' - request body data as a string
-    'env' - object with environment variables
+    'variables' - object with function variables
 
   'res' variable has:
     'send(text, status)' - function to return text response. Status code defaults to 200
@@ -21,7 +21,7 @@ func main(req: RequestValue, res: RequestResponse) -> RequestResponse {
   // You can remove services you don't use
   let account = Account(client)
   let avatars = Avatars(client)
-  let database = Databases(client, "YOUR_DATABASE_ID")
+  let database = Databases(client)
   let functions = Functions(client)
   let health = Health(client)
   let locale = Locale(client)

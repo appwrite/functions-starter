@@ -20,7 +20,7 @@ import io.appwrite.services.Users;
   'req' variable has:
     'headers' - object with request headers
     'payload' - request body data as a string
-    'env' - object with environment variables
+    'variables' - object with function variables
 
   'res' variable has:
     'send(text, status)' - function to return text response. Status code defaults to 200
@@ -37,7 +37,7 @@ public RuntimeResponse main(RuntimeRequest req, RuntimeResponse res) throws Exce
     // You can remove services you don't use
     var account = new Account(client);
     var avatars = new Avatars(client);
-    var database = new Databases(client, "YOUR_DATABASE_ID");
+    var database = new Databases(client);
     var functions = new Functions(client);
     var health = new Health(client);
     var locale = new Locale(client);

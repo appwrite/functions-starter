@@ -4,7 +4,7 @@ require 'appwrite'
   'req' variable has:
     'headers' - object with request headers
     'payload' - request body data as a string
-    'env' - object with environment variables
+    'variables' - object with function variables
 
   'res' variable has:
     'send(text, status)' - function to return text response. Status code defaults to 200
@@ -19,7 +19,7 @@ def main(req, res)
   # You can remove services you don't use
   account = Appwrite::Account.new(client)
   avatars = Appwrite::Avatars.new(client)
-  database = Appwrite::Databases.new(client, database_id: 'YOUR_DATABASE_ID')
+  database = Appwrite::Databases.new(client)
   functions = Appwrite::Functions.new(client)
   health = Appwrite::Health.new(client)
   locale = Appwrite::Locale.new(client)

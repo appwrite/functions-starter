@@ -15,7 +15,7 @@ from appwrite.services.users import Users
   'req' variable has:
     'headers' - object with request headers
     'payload' - request body data as a string
-    'env' - object with environment variables
+    'variables' - object with function variables
 
   'res' variable has:
     'send(text, status)' - function to return text response. Status code defaults to 200
@@ -30,7 +30,7 @@ def main(req, res):
   # You can remove services you don't use
   account = Account(client)
   avatars = Avatars(client)
-  database = Database(client, 'YOUR_DATABASE_ID')
+  database = Database(client)
   functions = Functions(client)
   health = Health(client)
   locale = Locale(client)

@@ -4,7 +4,7 @@ import { sdk } from "./deps.ts";
   'req' variable has:
     'headers' - object with request headers
     'payload' - request body data as a string
-    'env' - object with environment variables
+    'variables' - object with function variables
 
   'res' variable has:
     'send(text, status)' - function to return text response. Status code defaults to 200
@@ -19,7 +19,7 @@ export default async function (req: any, res: any) {
   // You can remove services you don't use
   let account = new sdk.Account(client);
   let avatars = new sdk.Avatars(client);
-  let database = new sdk.Databases(client, 'YOUR_DATABASE_ID');
+  let database = new sdk.Databases(client);
   let functions = new sdk.Functions(client);
   let health = new sdk.Health(client);
   let locale = new sdk.Locale(client);

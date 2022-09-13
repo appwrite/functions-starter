@@ -4,7 +4,7 @@ import 'package:dart_appwrite/dart_appwrite.dart';
   'req' variable has:
     'headers' - object with request headers
     'payload' - request body data as a string
-    'env' - object with environment variables
+    'variables' - object with function variables
 
   'res' variable has:
     'send(text, status)' - function to return text response. Status code defaults to 200
@@ -19,7 +19,7 @@ Future<void> start(final req, final res) async {
   // You can remove services you don't use
   Account account = Account(client);
   Avatars avatars = Avatars(client);
-  Databases database = Databases(client, databaseId: "YOUR_DATABASE_ID");
+  Databases database = Databases(client);
   Functions functions = Functions(client);
   Health health = Health(client);
   Locale locale = Locale(client);
