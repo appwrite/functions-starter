@@ -2,7 +2,7 @@
   'req' variable has:
     'Headers' - object with request headers
     'Payload' - request body data as a string
-    'Env' - object with environment variables
+    'variables' - object with function variables
 
   'res' variable has:
     'Send(text, status)' - function to return text response. Status code defaults to 200
