@@ -38,7 +38,7 @@ fun main(req: RuntimeRequest, res: RuntimeResponse): RuntimeResponse {
     // You can remove services you don't use
     val account = Account(client)
     val avatars = Avatars(client)
-    val database = Databases(client, "YOUR_DATABASE_ID")
+    val database = Databases(client)
     val functions = Functions(client)
     val health = Health(client)
     val locale = Locale(client)

@@ -34,7 +34,7 @@ return function($req, $res) {
   // You can remove services you don't use
   $account = new Account($client);
   $avatars = new Avatars($client);
-  $database = new Databases($client, 'YOUR_DATABASE_ID');
+  $database = new Databases($client);
   $functions = new Functions($client);
   $health = new Health($client);
   $locale = new Locale($client);

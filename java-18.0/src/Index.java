@@ -37,7 +37,7 @@ public RuntimeResponse main(RuntimeRequest req, RuntimeResponse res) throws Exce
     // You can remove services you don't use
     var account = new Account(client);
     var avatars = new Avatars(client);
-    var database = new Databases(client, "YOUR_DATABASE_ID");
+    var database = new Databases(client);
     var functions = new Functions(client);
     var health = new Health(client);
     var locale = new Locale(client);

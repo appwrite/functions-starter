@@ -30,7 +30,7 @@ def main(req, res):
   # You can remove services you don't use
   account = Account(client)
   avatars = Avatars(client)
-  database = Database(client, 'YOUR_DATABASE_ID')
+  database = Database(client)
   functions = Functions(client)
   health = Health(client)
   locale = Locale(client)

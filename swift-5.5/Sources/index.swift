@@ -21,7 +21,7 @@ func main(req: RequestValue, res: RequestResponse) -> RequestResponse {
   // You can remove services you don't use
   let account = Account(client)
   let avatars = Avatars(client)
-  let database = Databases(client, "YOUR_DATABASE_ID")
+  let database = Databases(client)
   let functions = Functions(client)
   let health = Health(client)
   let locale = Locale(client)

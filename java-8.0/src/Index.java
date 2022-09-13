@@ -37,7 +37,7 @@ public RuntimeResponse main(RuntimeRequest req, RuntimeResponse res) throws Exce
     // You can remove services you don't use
     Account account = new Account(client);
     Avatars avatars = new Avatars(client);
-    Databases database = new Databases(client, "YOUR_DATABASE_ID");
+    Databases database = new Databases(client);
     Functions functions = new Functions(client);
     Health health = new Health(client);
     Locale locale = new Locale(client);
