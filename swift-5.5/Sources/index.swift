@@ -29,13 +29,13 @@ func main(req: RequestValue, res: RequestResponse) -> RequestResponse {
   let teams = Teams(client)
   let users = Users(client)
 
-  if (req.env["APPWRITE_FUNCTION_ENDPOINT"] == nil || req.env["APPWRITE_FUNCTION_API_KEY"] == nil) {
+  if (req.variables["APPWRITE_FUNCTION_ENDPOINT"] == nil || req.variables["APPWRITE_FUNCTION_API_KEY"] == nil) {
     print("Environment variables are not set. Function cannot use Appwrite SDK.")
   } else {
     client
-      .setEndpoint(req.env["APPWRITE_FUNCTION_ENDPOINT"]!)
-      .setProject(req.env["APPWRITE_FUNCTION_PROJECT_ID"]!)
-      .setKey(req.env["APPWRITE_FUNCTION_API_KEY"]!)
+      .setEndpoint(req.variables["APPWRITE_FUNCTION_ENDPOINT"]!)
+      .setProject(req.variables["APPWRITE_FUNCTION_PROJECT_ID"]!)
+      .setKey(req.variables["APPWRITE_FUNCTION_API_KEY"]!)
   }
 
   return res.json(data: [

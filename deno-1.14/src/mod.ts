@@ -27,13 +27,13 @@ export default async function (req: any, res: any) {
   let teams = new sdk.Teams(client);
   let users = new sdk.Users(client);
 
-  if (!req.env['APPWRITE_FUNCTION_ENDPOINT'] || !req.env['APPWRITE_FUNCTION_API_KEY']) {
+  if (!req.variables['APPWRITE_FUNCTION_ENDPOINT'] || !req.variables['APPWRITE_FUNCTION_API_KEY']) {
     console.warn("Environment variables are not set. Function cannot use Appwrite SDK.");
   } else {
     client
-      .setEndpoint(req.env['APPWRITE_FUNCTION_ENDPOINT'] as string)
-      .setProject(req.env['APPWRITE_FUNCTION_PROJECT_ID'] as string)
-      .setKey(req.env['APPWRITE_FUNCTION_API_KEY'] as string);
+      .setEndpoint(req.variables['APPWRITE_FUNCTION_ENDPOINT'] as string)
+      .setProject(req.variables['APPWRITE_FUNCTION_PROJECT_ID'] as string)
+      .setKey(req.variables['APPWRITE_FUNCTION_API_KEY'] as string);
   }
 
   res.json({
