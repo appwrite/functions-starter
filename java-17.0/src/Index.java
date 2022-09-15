@@ -45,19 +45,19 @@ public RuntimeResponse main(RuntimeRequest req, RuntimeResponse res) throws Exce
     var teams = new Teams(client);
     var users = new Users(client);
 
-    var env = req.getEnv();
+    var variables = req.getVariables();
 
     if (env == null
         || !env.containsKey("APPWRITE_FUNCTION_ENDPOINT")
         || !env.containsKey("APPWRITE_FUNCTION_API_KEY")
-        || env.get("APPWRITE_FUNCTION_ENDPOINT") == null
-        || env.get("APPWRITE_FUNCTION_API_KEY") == null) {
+        || variables.get("APPWRITE_FUNCTION_ENDPOINT") == null
+        || variables.get("APPWRITE_FUNCTION_API_KEY") == null) {
         System.out.println("Environment variables are not set. Function cannot use Appwrite SDK.");
     } else {
         client
-          .setEndpoint(env.get("APPWRITE_FUNCTION_ENDPOINT"))
-          .setProject(env.get("APPWRITE_FUNCTION_PROJECT_ID"))
-          .setKey(env.get("APPWRITE_FUNCTION_API_KEY"));
+          .setEndpoint(variables.get("APPWRITE_FUNCTION_ENDPOINT"))
+          .setProject(variables.get("APPWRITE_FUNCTION_PROJECT_ID"))
+          .setKey(variables.get("APPWRITE_FUNCTION_API_KEY"));
     }
 
     return res.json(Map.of(
