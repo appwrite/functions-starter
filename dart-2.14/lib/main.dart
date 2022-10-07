@@ -27,15 +27,15 @@ Future<void> start(final req, final res) async {
   // final teams = Teams(client);
   // final users = Users(client);
 
-  if (req.env['APPWRITE_FUNCTION_ENDPOINT'] == null ||
-      req.env['APPWRITE_FUNCTION_API_KEY'] == null) {
+  if (req.variables['APPWRITE_FUNCTION_ENDPOINT'] == null ||
+      req.variables['APPWRITE_FUNCTION_API_KEY'] == null) {
     print(
         "Environment variables are not set. Function cannot use Appwrite SDK.");
   } else {
     client
-        .setEndpoint(req.env['APPWRITE_FUNCTION_ENDPOINT'])
-        .setProject(req.env['APPWRITE_FUNCTION_PROJECT_ID'])
-        .setKey(req.env['APPWRITE_FUNCTION_API_KEY'])
+        .setEndpoint(req.variables['APPWRITE_FUNCTION_ENDPOINT'])
+        .setProject(req.variables['APPWRITE_FUNCTION_PROJECT_ID'])
+        .setKey(req.variables['APPWRITE_FUNCTION_API_KEY'])
         .setSelfSigned(status: true);
   }
 
