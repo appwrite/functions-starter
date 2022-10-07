@@ -3,8 +3,8 @@ import { sdk } from "./deps.ts";
 /*
   'req' variable has:
     'headers' - object with request headers
-    'payload' - object with request body data
-    'env' - object with environment variables
+    'payload' - request body data as a string
+    'variables' - object with function variables
 
   'res' variable has:
     'send(text, status)' - function to return text response. Status code defaults to 200
@@ -17,23 +17,23 @@ export default async function (req: any, res: any) {
   const client = new sdk.Client();
 
   // You can remove services you don't use
-  let account = new sdk.Account(client);
-  let avatars = new sdk.Avatars(client);
-  let database = new sdk.Databases(client, 'YOUR_DATABASE_ID');
-  let functions = new sdk.Functions(client);
-  let health = new sdk.Health(client);
-  let locale = new sdk.Locale(client);
-  let storage = new sdk.Storage(client);
-  let teams = new sdk.Teams(client);
-  let users = new sdk.Users(client);
+  const account = new sdk.Account(client);
+  const avatars = new sdk.Avatars(client);
+  const database = new sdk.Databases(client);
+  const functions = new sdk.Functions(client);
+  const health = new sdk.Health(client);
+  const locale = new sdk.Locale(client);
+  const storage = new sdk.Storage(client);
+  const teams = new sdk.Teams(client);
+  const users = new sdk.Users(client);
 
-  if (!req.env['APPWRITE_FUNCTION_ENDPOINT'] || !req.env['APPWRITE_FUNCTION_API_KEY']) {
+  if (!req.variables['APPWRITE_FUNCTION_ENDPOINT'] || !req.variables['APPWRITE_FUNCTION_API_KEY']) {
     console.warn("Environment variables are not set. Function cannot use Appwrite SDK.");
   } else {
     client
-      .setEndpoint(req.env['APPWRITE_FUNCTION_ENDPOINT'] as string)
-      .setProject(req.env['APPWRITE_FUNCTION_PROJECT_ID'] as string)
-      .setKey(req.env['APPWRITE_FUNCTION_API_KEY'] as string);
+      .setEndpoint(req.variables['APPWRITE_FUNCTION_ENDPOINT'] as string)
+      .setProject(req.variables['APPWRITE_FUNCTION_PROJECT_ID'] as string)
+      .setKey(req.variables['APPWRITE_FUNCTION_API_KEY'] as string);
   }
 
   res.json({

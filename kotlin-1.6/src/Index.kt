@@ -16,6 +16,19 @@ import io.appwrite.services.Storage
 import io.appwrite.services.Teams
 import io.appwrite.services.Users
 
+/*
+  'req' variable has:
+    'headers' - object with request headers
+    'payload' - request body data as a string
+    'variables' - object with function variables
+
+  'res' variable has:
+    'send(text, status)' - function to return text response. Status code defaults to 200
+    'json(obj, status)' - function to return JSON response. Status code defaults to 200
+  
+  If an error is thrown, a response with code 500 will be returned.
+*/
+
 private val gson = Gson()
 
 @Throws(Exception::class)
@@ -25,7 +38,7 @@ fun main(req: RuntimeRequest, res: RuntimeResponse): RuntimeResponse {
     // You can remove services you don't use
     val account = Account(client)
     val avatars = Avatars(client)
-    val database = Databases(client, "YOUR_DATABASE_ID")
+    val database = Databases(client)
     val functions = Functions(client)
     val health = Health(client)
     val locale = Locale(client)
@@ -33,13 +46,13 @@ fun main(req: RuntimeRequest, res: RuntimeResponse): RuntimeResponse {
     val teams = Teams(client)
     val users = Users(client)
 
-    if (req.env["APPWRITE_FUNCTION_ENDPOINT"] == null || req.env["APPWRITE_FUNCTION_API_KEY"] == null) {
+    if (req.variables["APPWRITE_FUNCTION_ENDPOINT"] == null || req.variables["APPWRITE_FUNCTION_API_KEY"] == null) {
         println("Environment variables are not set. Function cannot use Appwrite SDK.")
     } else {
         client
-            .setEndpoint(req.env["APPWRITE_FUNCTION_ENDPOINT"]!!)
-            .setProject(req.env["APPWRITE_FUNCTION_PROJECT_ID"]!!)
-            .setKey(req.env["APPWRITE_FUNCTION_API_KEY"]!!)
+            .setEndpoint(req.variables["APPWRITE_FUNCTION_ENDPOINT"]!!)
+            .setProject(req.variables["APPWRITE_FUNCTION_PROJECT_ID"]!!)
+            .setKey(req.variables["APPWRITE_FUNCTION_API_KEY"]!!)
     }
 
     return res.json(mapOf(

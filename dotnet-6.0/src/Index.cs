@@ -1,8 +1,8 @@
 /*
   'req' variable has:
     'Headers' - object with request headers
-    'Payload' - object with request body data
-    'Env' - object with environment variables
+    'Payload' - request body data as a string
+    'variables' - object with function variables
 
   'res' variable has:
     'Send(text, status)' - function to return text response. Status code defaults to 200
@@ -10,6 +10,9 @@
   
   If an error is thrown, a response with code 500 will be returned.
 */
+
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 public async Task<RuntimeResponse> Main(RuntimeRequest req, RuntimeResponse res)
 {

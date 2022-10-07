@@ -9,8 +9,8 @@ use rocket::serde::json::json;
 
   'req' is a struct `RequestValue` that can be imported from super which contains the following:
     'headers' - object with request headers - "Option<Map<String, Value>>"
-    'payload' - object with request body data - "String"
-    'env' - object with environment variables - "Map<String, Value>"
+    'payload' - request body data as a string - "String"
+    'variables' - object with function variables - "Map<String, Value>"
   'res' is a enum `Response` that can be imported from super which has the two following functions:
     'send(value: String)' - function to return text response.
     'json(value: Value)' - function to return JSON response.

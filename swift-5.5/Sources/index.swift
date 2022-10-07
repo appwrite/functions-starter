@@ -5,8 +5,8 @@ import Foundation
 /*
   'req' variable has:
     'headers' - object with request headers
-    'payload' - object with request body data
-    'env' - object with environment variables
+    'payload' - request body data as a string
+    'variables' - object with function variables
 
   'res' variable has:
     'send(text, status)' - function to return text response. Status code defaults to 200
@@ -21,7 +21,7 @@ func main(req: RequestValue, res: RequestResponse) -> RequestResponse {
   // You can remove services you don't use
   let account = Account(client)
   let avatars = Avatars(client)
-  let database = Databases(client, "YOUR_DATABASE_ID")
+  let database = Databases(client)
   let functions = Functions(client)
   let health = Health(client)
   let locale = Locale(client)
@@ -29,13 +29,13 @@ func main(req: RequestValue, res: RequestResponse) -> RequestResponse {
   let teams = Teams(client)
   let users = Users(client)
 
-  if (req.env["APPWRITE_FUNCTION_ENDPOINT"] == nil || req.env["APPWRITE_FUNCTION_API_KEY"] == nil) {
+  if (req.variables["APPWRITE_FUNCTION_ENDPOINT"] == nil || req.variables["APPWRITE_FUNCTION_API_KEY"] == nil) {
     print("Environment variables are not set. Function cannot use Appwrite SDK.")
   } else {
     client
-      .setEndpoint(req.env["APPWRITE_FUNCTION_ENDPOINT"]!)
-      .setProject(req.env["APPWRITE_FUNCTION_PROJECT_ID"]!)
-      .setKey(req.env["APPWRITE_FUNCTION_API_KEY"]!)
+      .setEndpoint(req.variables["APPWRITE_FUNCTION_ENDPOINT"]!)
+      .setProject(req.variables["APPWRITE_FUNCTION_PROJECT_ID"]!)
+      .setKey(req.variables["APPWRITE_FUNCTION_API_KEY"]!)
   }
 
   return res.json(data: [

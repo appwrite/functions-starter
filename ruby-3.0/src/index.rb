@@ -3,8 +3,8 @@ require 'appwrite'
 =begin
   'req' variable has:
     'headers' - object with request headers
-    'payload' - object with request body data
-    'env' - object with environment variables
+    'payload' - request body data as a string
+    'variables' - object with function variables
 
   'res' variable has:
     'send(text, status)' - function to return text response. Status code defaults to 200
@@ -19,7 +19,7 @@ def main(req, res)
   # You can remove services you don't use
   account = Appwrite::Account.new(client)
   avatars = Appwrite::Avatars.new(client)
-  database = Appwrite::Databases.new(client, database_id: 'YOUR_DATABASE_ID')
+  database = Appwrite::Databases.new(client)
   functions = Appwrite::Functions.new(client)
   health = Appwrite::Health.new(client)
   locale = Appwrite::Locale.new(client)
@@ -27,13 +27,13 @@ def main(req, res)
   teams = Appwrite::Teams.new(client)
   users = Appwrite::Users.new(client)
 
-  if !req.env['APPWRITE_FUNCTION_ENDPOINT'] or !req.env['APPWRITE_FUNCTION_API_KEY']
+  if !req.variables['APPWRITE_FUNCTION_ENDPOINT'] or !req.variables['APPWRITE_FUNCTION_API_KEY']
     puts "Environment variables are not set. Function cannot use Appwrite SDK."
   else
     client
-      .set_endpoint(req.env['APPWRITE_FUNCTION_ENDPOINT'])
-      .set_project(req.env['APPWRITE_FUNCTION_PROJECTID'])
-      .set_key(req.env['APPWRITE_FUNCTION_API_KEY'])
+      .set_endpoint(req.variables['APPWRITE_FUNCTION_ENDPOINT'])
+      .set_project(req.variables['APPWRITE_FUNCTION_PROJECTID'])
+      .set_key(req.variables['APPWRITE_FUNCTION_API_KEY'])
       .set_self_signed(true)
   end
 

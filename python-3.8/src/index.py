@@ -14,8 +14,8 @@ from appwrite.services.users import Users
 """
   'req' variable has:
     'headers' - object with request headers
-    'payload' - object with request body data
-    'env' - object with environment variables
+    'payload' - request body data as a string
+    'variables' - object with function variables
 
   'res' variable has:
     'send(text, status)' - function to return text response. Status code defaults to 200
@@ -30,7 +30,7 @@ def main(req, res):
   # You can remove services you don't use
   account = Account(client)
   avatars = Avatars(client)
-  database = Databases(client, 'YOUR_DATABASE_ID')
+  database = Databases(client)
   functions = Functions(client)
   health = Health(client)
   locale = Locale(client)
@@ -38,14 +38,14 @@ def main(req, res):
   teams = Teams(client)
   users = Users(client)
 
-  if not req.env.get('APPWRITE_FUNCTION_ENDPOINT') or not req.env.get('APPWRITE_FUNCTION_API_KEY'):
+  if not req.variables.get('APPWRITE_FUNCTION_ENDPOINT') or not req.variables.get('APPWRITE_FUNCTION_API_KEY'):
     print('Environment variables are not set. Function cannot use Appwrite SDK.')
   else:
     (
     client
-      .set_endpoint(req.env.get('APPWRITE_FUNCTION_ENDPOINT', None))
-      .set_project(req.env.get('APPWRITE_FUNCTION_PROJECT_ID', None))
-      .set_key(req.env.get('APPWRITE_FUNCTION_API_KEY', None))
+      .set_endpoint(req.variables.get('APPWRITE_FUNCTION_ENDPOINT', None))
+      .set_project(req.variables.get('APPWRITE_FUNCTION_PROJECT_ID', None))
+      .set_key(req.variables.get('APPWRITE_FUNCTION_API_KEY', None))
       .set_self_signed(True)
     )
   
