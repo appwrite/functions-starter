@@ -4,7 +4,10 @@ version: 1.0.0
 publish_to: 'none'
 
 environment:
-  sdk: '>=2.13.0 <3.0.0'
+  sdk: '>=2.18.0 <3.0.0'
+
+dependencies: 
+  dart_appwrite: ^7.1.0
       
 dev_dependencies:
-  lints: ^1.0.1
+  lints: ^2.0.0
