@@ -29,38 +29,41 @@ import io.appwrite.services.Users;
   If an error is thrown, a response with code 500 will be returned.
 */
 
-final Gson gson = new Gson();
+public class Index{
+  
+  final Gson gson = new Gson();
 
-public RuntimeResponse main(RuntimeRequest req, RuntimeResponse res) throws Exception {
-    var client = new Client();
+  public RuntimeResponse main(RuntimeRequest req, RuntimeResponse res) throws Exception {
+        var client = new Client();
 
-    // You can remove services you don't use
-    var account = new Account(client);
-    var avatars = new Avatars(client);
-    var database = new Databases(client);
-    var functions = new Functions(client);
-    var health = new Health(client);
-    var locale = new Locale(client);
-    var storage = new Storage(client);
-    var teams = new Teams(client);
-    var users = new Users(client);
+        // You can remove services you don't use
+        var account = new Account(client);
+        var avatars = new Avatars(client);
+        var database = new Databases(client);
+        var functions = new Functions(client);
+        var health = new Health(client);
+        var locale = new Locale(client);
+        var storage = new Storage(client);
+        var teams = new Teams(client);
+        var users = new Users(client);
 
-    var variables = req.getVariables();
+        var variables = req.getVariables();
 
-    if (env == null
-        || !env.containsKey("APPWRITE_FUNCTION_ENDPOINT")
-        || !env.containsKey("APPWRITE_FUNCTION_API_KEY")
-        || variables.get("APPWRITE_FUNCTION_ENDPOINT") == null
-        || variables.get("APPWRITE_FUNCTION_API_KEY") == null) {
-        System.out.println("Environment variables are not set. Function cannot use Appwrite SDK.");
-    } else {
-        client
-          .setEndpoint(variables.get("APPWRITE_FUNCTION_ENDPOINT"))
-          .setProject(variables.get("APPWRITE_FUNCTION_PROJECT_ID"))
-          .setKey(variables.get("APPWRITE_FUNCTION_API_KEY"));
+        if (env == null
+            || !env.containsKey("APPWRITE_FUNCTION_ENDPOINT")
+            || !env.containsKey("APPWRITE_FUNCTION_API_KEY")
+            || variables.get("APPWRITE_FUNCTION_ENDPOINT") == null
+            || variables.get("APPWRITE_FUNCTION_API_KEY") == null) {
+            System.out.println("Environment variables are not set. Function cannot use Appwrite SDK.");
+        } else {
+            client
+              .setEndpoint(variables.get("APPWRITE_FUNCTION_ENDPOINT"))
+              .setProject(variables.get("APPWRITE_FUNCTION_PROJECT_ID"))
+              .setKey(variables.get("APPWRITE_FUNCTION_API_KEY"));
+        }
+
+        return res.json(Map.of(
+            "areDevelopersAwesome", true
+        ));
     }
-
-    return res.json(Map.of(
-        "areDevelopersAwesome", true
-    ));
 }
