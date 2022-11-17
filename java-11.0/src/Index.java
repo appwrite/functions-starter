@@ -18,13 +18,13 @@ import io.appwrite.services.Users;
 
 /*
   'req' variable has:
-    'headers' - object with request headers
-    'payload' - request body data as a string
-    'variables' - object with function variables
+    'getHeaders()' - function to get headers as a Map<String, String>
+    'getPayload()' - function to get body data as a String
+    'getVariables()' - function to get variables as a Map<String, String>
 
   'res' variable has:
-    'send(text, status)' - function to return text response. Status code defaults to 200
-    'json(obj, status)' - function to return JSON response. Status code defaults to 200
+    'send(text, status)' - function that accepts a String to return text response. Status code defaults to 200
+    'json(obj, status)' - function that accepts a Map<String, Object> to return JSON response. Status code defaults to 200
   
   If an error is thrown, a response with code 500 will be returned.
 */
@@ -47,9 +47,9 @@ public RuntimeResponse main(RuntimeRequest req, RuntimeResponse res) throws Exce
 
     var variables = req.getVariables();
 
-    if (env == null
-        || !env.containsKey("APPWRITE_FUNCTION_ENDPOINT")
-        || !env.containsKey("APPWRITE_FUNCTION_API_KEY")
+    if (variables == null
+        || !variables.containsKey("APPWRITE_FUNCTION_ENDPOINT")
+        || !variables.containsKey("APPWRITE_FUNCTION_API_KEY")
         || variables.get("APPWRITE_FUNCTION_ENDPOINT") == null
         || variables.get("APPWRITE_FUNCTION_API_KEY") == null) {
         System.out.println("Environment variables are not set. Function cannot use Appwrite SDK.");
