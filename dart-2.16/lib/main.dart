@@ -1,47 +1,34 @@
+import 'dart:async';
 import 'package:dart_appwrite/dart_appwrite.dart';
 
-/*
-  'req' variable has:
-    'headers' - object with request headers
-    'payload' - object with request body data
-    'env' - object with environment variables
+// This is your Appwrite function
+// It's executed each time we get a request
+Future<dynamic> main(final context) async {
+// Why not try the Appwrite SDK?
+  //
+  // final client = Client()
+  //    .setEndpoint('https://cloud.appwrite.io/v1')
+  //    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+  //    .setKey(process.env.APPWRITE_API_KEY);
 
-  'res' variable has:
-    'send(text, status)' - function to return text response. Status code defaults to 200
-    'json(obj, status)' - function to return JSON response. Status code defaults to 200
-  
-  If an error is thrown, a response with code 500 will be returned.
-*/
+  // You can log messages to the console
+  context.log('Hello, Logs!');
 
-Future<void> start(final req, final res) async {
-  Client client = Client();
+  // If something goes wrong, log an error
+  context.error('Hello, Errors!');
 
-  // You can remove services you don't use
-  Account account = Account(client);
-  Avatars avatars = Avatars(client);
-  Database database = Database(client);
-  Functions functions = Functions(client);
-  Health health = Health(client);
-  Locale locale = Locale(client);
-  Storage storage = Storage(client);
-  Teams teams = Teams(client);
-  Users users = Users(client);
-
-  if(
-    req.env['APPWRITE_FUNCTION_ENDPOINT'] == null
-      || req.env['APPWRITE_FUNCTION_API_KEY'] == null
-      || req.env['APPWRITE_FUNCTION_API_KEY'] == null
-  ) {
-    print("Environment variables are not set. Function cannot use Appwrite SDK.");
-  } else {
-    client
-      .setEndpoint(req.env['APPWRITE_FUNCTION_ENDPOINT'])
-      .setProject(req.env['APPWRITE_FUNCTION_PROJECT_ID'])
-      .setKey(req.env['APPWRITE_FUNCTION_API_KEY'])
-      .setSelfSigned(status: true);
+  // The `req` object contains the request data
+  if (context.req.method == 'GET') {
+    // Send a response with the res object helpers
+    // `res.send()` dispatches a string back to the client
+    return context.res.send('Hello, World!');
   }
 
-  res.json({
-    'areDevelopersAwesome': true,
+  // `res.json()` is a handy helper for sending JSON
+  return context.res.json({
+    'motto': 'Build Fast. Scale Big. All in One Place.',
+    'learn': 'https://appwrite.io/docs',
+    'connect': 'https://appwrite.io/discord',
+    'getInspired': 'https://builtwith.appwrite.io',
   });
 }
