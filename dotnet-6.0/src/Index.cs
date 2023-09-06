@@ -11,7 +11,6 @@ public class Handler {
     public async Task<RuntimeOutput> Main(RuntimeContext Context) 
     {
         // Why not try the Appwrite SDK?
-        //
         // var client = new Client()
         //     .SetEndpoint("http://cloud.appwrite.io/v1")  
         //     .SetProject(Environment.GetEnvironmentVariable("APPWRITE_FUNCTION_PROJECT_ID"))        

@@ -6,7 +6,6 @@ import Foundation
 // It's executed each time we get a request
 func main(context: RuntimeContext) async throws -> RuntimeOutput {
     // Why not try the Appwrite SDK?
-    //
     // let client = Client()
     //    .setEndpoint("https://cloud.appwrite.io/v1")
     //    .setProject(ProcessInfo.processInfo.environment["APPWRITE_FUNCTION_PROJECT_ID"])

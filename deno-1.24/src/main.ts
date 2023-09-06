@@ -4,11 +4,10 @@ import { Client } from "https://deno.land/x/appwrite@7.0.0/mod.ts";
 // It's executed each time we get a request
 export default ({ req, res, log, error }: any) => {
   // Why not try the Appwrite SDK?
-  //
   // const client = new Client()
-  //    .setEndpoint('https://cloud.appwrite.io/v1')
-  //    .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID"))
-  //    .setKey(Deno.env.get("APPWRITE_API_KEY"));
+  //  .setEndpoint('https://cloud.appwrite.io/v1')
+  //  .setProject(Deno.env.get("APPWRITE_FUNCTION_PROJECT_ID"))
+  //  .setKey(Deno.env.get("APPWRITE_API_KEY"));
 
   // You can log messages to the console
   log("Hello, Logs!");

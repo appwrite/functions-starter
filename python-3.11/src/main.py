@@ -6,7 +6,6 @@ import os
 # It's executed each time we get a request
 def main(context):
     # Why not try the Appwrite SDK?
-    #
     # client = (
     #     Client()
     #     .set_endpoint("https://cloud.appwrite.io/v1")

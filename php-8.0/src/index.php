@@ -3,18 +3,16 @@
 require(__DIR__ . '/../vendor/autoload.php');
 
 use Appwrite\Client;
-use Appwrite\Exception;
 
 // This is your Appwrite function
 // It's executed each time we get a request
 return function ($context) {
     // Why not try the Appwrite SDK?
-    //
     // $client = new Client();
     // $client
     //     ->setEndpoint('https://cloud.appwrite.io/v1')
     //     ->setProject(getenv('APPWRITE_FUNCTION_PROJECT_ID'))
-    //      ->setKey(getenv('APPWRITE_API_KEY'));
+    //     ->setKey(getenv('APPWRITE_API_KEY'));
 
     // You can log messages to the console
     $context->log('Hello, Logs!');

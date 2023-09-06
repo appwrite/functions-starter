@@ -11,12 +11,11 @@ public class Main {
     // It's executed each time we get a request
     public RuntimeOutput main(RuntimeContext context) throws Exception {
         // Why not try the Appwrite SDK?
-        //
         // Client client = new Client();
         // client
-        //         .setEndpoint("https://cloud.appwrite.io/v1")
-        //         .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
-        //         .setKey(System.getenv("APPWRITE_API_KEY"));
+        //     .setEndpoint("https://cloud.appwrite.io/v1")
+        //     .setProject(System.getenv("APPWRITE_FUNCTION_PROJECT_ID"))
+        //     .setKey(System.getenv("APPWRITE_API_KEY"));
 
         // You can log messages to the console
         context.log("Hello, Logs!");
