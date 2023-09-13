@@ -21,3 +21,4 @@ appwrite init function
 | Java    | 8.0      | 11.0 | 17.0 | 18.0 |      |
 | Kotlin  | 1.6      | 1.8  |      |      |      |
 | .NET    | 6.0      | 7.0  |      |      |      |
+| Bun     | 1.0      |      |      |      |      |
