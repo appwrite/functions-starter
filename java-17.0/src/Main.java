@@ -3,6 +3,7 @@ package io.openruntimes.java.src;
 import io.openruntimes.java.RuntimeContext;
 import io.openruntimes.java.RuntimeOutput;
 import java.util.HashMap;
+import java.util.Map;
 import io.appwrite.Client;
 
 public class Main {
@@ -11,6 +12,7 @@ public class Main {
     // It's executed each time we get a request
     public RuntimeOutput main(RuntimeContext context) throws Exception {
         // Why not try the Appwrite SDK?
+        //
         // Client client = new Client();
         // client
         //     .setEndpoint("https://cloud.appwrite.io/v1")
@@ -35,7 +37,7 @@ public class Main {
         json.put("learn", "https://appwrite.io/docs");
         json.put("connect", "https://appwrite.io/discord");
         json.put("getInspired", "https://builtwith.appwrite.io");
-        
+
         // `context.getRes().json()` is a handy helper for sending JSON
         return context.getRes().json(json);
     }
