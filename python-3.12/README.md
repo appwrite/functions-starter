@@ -37,7 +37,7 @@ Sample `200` Response:
 
 | Setting           | Value                             |
 |-------------------|-----------------------------------|
-| Runtime           | Python (3.11)                     |
+| Runtime           | Python (3.12)                     |
 | Entrypoint        | `src/main.py`                     |
 | Build Commands    | `pip install -r requirements.txt` |
 | Permissions       | `any`                             |
