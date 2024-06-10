@@ -6,6 +6,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Appwrite" Version="0.4.2" />
+    <PackageReference Include="Appwrite" Version="0.8.2" />
   </ItemGroup>
 </Project>

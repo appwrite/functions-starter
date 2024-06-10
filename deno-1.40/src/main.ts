@@ -1,4 +1,4 @@
-import { Client } from "https://deno.land/x/appwrite@9.1.0/mod.ts";
+import { Client } from "https://deno.land/x/appwrite@11.0.0/mod.ts";
 
 // This is your Appwrite function
 // It's executed each time we get a request
