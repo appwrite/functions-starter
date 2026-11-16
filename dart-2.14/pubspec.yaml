@@ -10,4 +10,4 @@ dependencies:
   dart_appwrite: ^7.1.0
       
 dev_dependencies:
-  lints: ^1.0.1
+  lints: ^6.0.0
